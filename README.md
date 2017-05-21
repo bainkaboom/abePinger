@@ -8,10 +8,13 @@ chmod +x ./abePinger.py,
 you need to add the following Global variables but don't include them as Twilio's API needs a specific KEY: 
 
 NETWORK_TO_PING = "10.99.99.99"
+
 ABE_NUMBER = "+15551234567"
+
 TWILIO_NUMBER = "+15551237777"
 
 twilio_account_sid = "ACxxxxxxxxxxxx"
+
 twilio_auth_token = "xxxxxxxxxxxxxxx"
 
 
