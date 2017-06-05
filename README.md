@@ -1,26 +1,26 @@
-# abePinger
-First attempt is complete.
+# current Production: abePingerV2.1-sanitized.py
 
-Using an UBUNTU EC2 instance, which will ping my 'public-ddns' IP address, then report to my number and will be delayed every 30 minutes, so it does not take up more than 1 text per 30 mins.. unless my IP comes back up and is reachable...
+Usage:
 
-chmod +x ./abePinger.py,
+Simple code to monitor an IP address via the 'cloud' and receive text messages. I use this to ping my Dynamic DNS IP address at my home.
 
-you need to add the following Global variables but don't include them as Twilio's API needs a specific KEY: 
-
-NETWORK_TO_PING = "10.99.99.99"
-
-ABE_NUMBER = "+15551234567"
-
-TWILIO_NUMBER = "+15551237777"
-
-twilio_account_sid = "ACxxxxxxxxxxxx"
-
-twilio_auth_token = "xxxxxxxxxxxxxxx"
+By default this program will wait 30 minutes between texts (so it does not rack up much text SMS cost : $0.0074/txt USD for US phones)
 
 
 
-I will be expanding this to maybe even gather further facts from my network, like server status, basic TCP conn tests...
+
+Instructions:
 
 
+1. Create an AWS EC2 instance (I used Ubuntu)
+2. Fill in your global variables: 
+    - IP address to ping
+    - Twilio Phone number
+    - Your Message number (ABE_NUMBER), where you want the texts)
+    - Twilio Account SID
+    - Twilio Auth Token
+
+3. Clone the branch and then execute the current production script. 
+4. Run the script on the EC2 instance, but need to make it executable: chmod +x ./abePingerV2.1-sanitized.py
 
 If anyone sees this and has a way to do it better, i'm open! still learning Python. 
