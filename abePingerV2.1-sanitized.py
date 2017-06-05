@@ -19,11 +19,8 @@ GLOBAL_TIME_BETWEEN_FAILURE = 1800 # 30 mins in seconds
 class PingableAddress:
     """Pingable Address class, which holds attributes such as ping times, the address, etc."""
 
-    def __init__(self, ipaddr_str):  #devconn_obj):
+    def __init__(self, ipaddr_str):
         self.ip = ipaddr_str
-        # TODO: Find out what Connection object I created meant?
-        # I believe this meant, for future monitoring of tcp service etc like http.
-        #self.connection = devconn_obj
         self.sendTextdict = {
             'bool_msg_sent' : False,
             'bool_msg_recovered_sent' : False,
@@ -63,9 +60,6 @@ class PingableAddress:
 
         self.pingResults = results
         self.pingReturnCode = results.returncode
-
-        # No need to return, since it will update object itself. but for modulizing could allow an IP input with default
-        # return results.returncode, msRE.group('ms')
 
     def sendSMS(self, message):
         self.twilioClient.api.account.messages.create(to=ABE_NUMBER,
