@@ -44,7 +44,7 @@ class PingableAddress:
         self.twilioClient = Client(twilio_account_sid, twilio_auth_token)
 
     def ping(self):
-        print("Pinging {}".format(self.ip))
+        #print("Pinging {}".format(self.ip))
         results = subprocess.run(["ping", "-c 1", "{}".format(self.ip)], stdout=subprocess.PIPE, encoding='utf_8')
 
         if results.returncode == 0:
@@ -78,7 +78,7 @@ class PingableAddress:
         if self.pingable:
             if self.sendTextdict['bool_msg_sent'] == True:
                 print(message_obj['msg_recovered'])
- #               self.sendSMS(message_obj['msg_recovered'])
+                self.sendSMS(message_obj['msg_recovered'])
                 self.sendTextdict['bool_msg_recovered_sent'] = True
 
             #Pingable Clean ups:
@@ -96,12 +96,12 @@ class PingableAddress:
                 self.sendTextdict['time_msg_sent'] = (time.time() // 1)
                 if self.sendTextdict['time_msg_sent'] > self.sendTextdict['time_msg_sent_plus_thirty']:
                     print(message_obj['msg_down_thirty_mins'])
-#                    self.sendSMS(message_obj['msg_down_thirty_mins'])
+                    self.sendSMS(message_obj['msg_down_thirty_mins'])
                     self.sendTextdict['bool_msg_down_thirty_mins'] = True
 
             if not self.sendTextdict['bool_msg_sent']:
                 print(message_obj['msg_initial_failure'])
-#                self.sendSMS(message_obj['msg_initial_failure'])
+                self.sendSMS(message_obj['msg_initial_failure'])
                 self.sendTextdict['bool_msg_sent'] = True
                 if self.sendTextdict['time_msg_sent'] == None:
                     self.sendTextdict['time_msg_sent'] = (time.time() // 1)
